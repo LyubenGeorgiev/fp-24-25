@@ -17,6 +17,24 @@ Define the following functions:
           use of `if-else`.
 |#
 
+(define (not-equal-one-line? x y)
+  (not (= x y))
+  )
+
+(define (not-equal-guards? x y)
+  (cond
+    [(= x y) #f]
+    [else #t]
+    )
+  )
+
+(define (inside? a b x)
+  ;(and (<= (min a b) x) (<= x (max a b)))
+  (<= (min a b) x (max a b))
+  )
+
+(define tri 3)
+
 (equal? (not-equal-one-line? 5 2) #t)
 (equal? (not-equal-one-line? 5 5) #f)
 

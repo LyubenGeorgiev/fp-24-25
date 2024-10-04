@@ -21,6 +21,49 @@ Define the following procedures:
 4. `min-built-in` uses built-in functions.
 |#
 
+(define (min-if x y)
+  (if (< x y)
+      x
+      y
+   )
+  )
+
+(define (min-guard x y)
+  (cond
+    [(< x y) x]
+    [(= x y) x]
+    [else y]
+    )
+  )
+
+(define (min-built-in x y)
+  (min x y)
+  )
+
+(define (last-digit x)
+  (remainder x 10)
+  )
+
+(define (quotient-whole x y)
+  (quotient x y)
+  )
+
+(define (div-whole x y)
+  (/ x y)
+  )
+
+(define (remove-last-digit x)
+  (quotient x 10)
+  )
+
+(define (average-whole x y)
+  (/ (+ x y) 2)
+  )
+
+(define (round-two-dig x)
+  (/ (round (* x 100)) 100)
+  )
+
 (= (min-if -60 -15) -60)
 (= (min-if 15 60) 15)
 (= (min-if 60 15) 15)
@@ -33,6 +76,7 @@ Define the following procedures:
 (= (last-digit 154) 4)
 
 (= (quotient-whole 64 2) 32)
+(= (quotient-whole 65 2) 32)
 
 (div-whole 154 17) ; 9 1/17
 

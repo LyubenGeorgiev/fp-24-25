@@ -12,7 +12,30 @@ that return the factorial of a `non-negative` number.
 4. `fact-iter` creates a linearly iterative process.
 |#
 
-; (fact-rec -1)
+(define (fact-rec n)
+  (cond
+    [(negative? n) (error "N is negative")]
+    [(zero? n) 1]
+    [else (* n (fact-rec (sub1 n)))]
+   )
+  )
+
+(define (fact-iter n)
+  (define (fact-helper n res)
+    (if (zero? n)
+        res
+        (fact-helper (- n 1) (* n res))
+        )
+    )
+  (if (negative? n)
+      (error "N is negative")
+      (fact-helper n 1)
+      )
+  )
+
+
+
+; (fact-iter -1)
 (= (fact-rec 0) 1)
 (= (fact-rec 1) 1)
 (= (fact-rec 11) 39916800)
