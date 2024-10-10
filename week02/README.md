@@ -1,4 +1,4 @@
-## New stuff
+## New stuff (could be useful)
 ### ```expt``` - power function
 ```scheme
 (expt 2 10) ; 1024
