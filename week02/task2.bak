@@ -14,16 +14,7 @@ Define a predicate that checks whether a number is prime.
 (require math/number-theory)
 
 (define (num-prime? n)
-  (define (helper x)
-    (if (> x 1)
-        (or (divides? x n) (helper (sub1 x)))
-        #f
-     )
-    )
-  (if (negative? n)
-      (error "Negative n")
-      (and (> n 1) (not (helper (sub1 n))))
-   )
+  
   )
 
 (equal? (num-prime? 1) #f)

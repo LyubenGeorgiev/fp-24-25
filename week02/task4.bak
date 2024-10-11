@@ -13,11 +13,8 @@ Assume correct input.
 1. All tests pass.
 |#
 
-(require math/number-theory)
-
-
 (define (perfect? n)
-  (= (- (divisor-sum n) n) n)
+  
   )
 
 (equal? (perfect? 6) #t)

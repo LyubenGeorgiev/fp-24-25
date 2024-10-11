@@ -9,10 +9,7 @@ Define a procedure that finds the maximum digit in a number.
 |#
 
 (define (find-max n)
-  (if (< (abs n) 10)
-      (abs n)
-      (max (remainder (abs n) 10) (find-max (quotient (abs n) 10)))
-      )
+  
   )
 
 (= (find-max 55345) 5)

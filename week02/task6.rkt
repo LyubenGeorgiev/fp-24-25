@@ -29,9 +29,47 @@ and `1634` (`4` digits):
 
 (require racket/trace)
 
-(define (narcissistic? n)
-  
+(define (num-digits n)
+  (if (< n 10) ; single digit number
+      1
+      (add1 (num-digits (quotient n 10)))
+      )
   )
+
+(define (num-digits2 n)
+  (if (zero? n)
+      1
+      (if (< n 1)
+          0
+          (add1 (num-digits2 (/ n 10)))
+       )
+   )
+  )
+
+(define (narcissistic? n)
+  (define (helper len current)
+    (if (positive? current)
+        (+
+         (expt (remainder current 10) len)
+         (helper len (quotient current 10))
+         )
+        0
+     )
+    )
+  (trace helper)
+  (= (helper (num-digits n) n) n)
+  )
+
+(equal? (num-digits 0) 1)
+(equal? (num-digits2 0) 1)
+(equal? (num-digits2 1) 1)
+(equal? (num-digits2 2) 1)
+(equal? (num-digits2 10) 2)
+(equal? (num-digits2 11) 2)
+(equal? (num-digits2 12) 2)
+(equal? (num-digits2 999999999) 9)
+(equal? (num-digits2 1000000000) 10)
+(equal? (num-digits2 1000000001) 10)
 
 (equal? (narcissistic? 7) #t)
 (equal? (narcissistic? 12) #f)
