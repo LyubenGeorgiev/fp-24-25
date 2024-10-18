@@ -12,13 +12,26 @@ Using `accumulate` define a procedure that:
 1. All tests pass.
 |#
 
+(define (accumulate f acc start end transform next)
+  (if (> start end)
+      acc
+      (accumulate f (f (transform start) acc) (next start) end transform next)
+      )
+  )
 
 (define (all? start end p?)
-  
+  (accumulate (λ (x y) (and x y)) #t (min start end) (max start end) p? add1)
   )
 
 (define (argmin f start end)
-  
+  (accumulate
+   (λ (x acc) (if (< (f x) (f acc)) x acc))
+   start
+   (min start end)
+   (max start end)
+   identity
+   add1
+   )
   )
 
 #|

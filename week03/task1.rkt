@@ -19,30 +19,41 @@ Define a higher order procedure that:
 1. All tests pass.
 |#
 
-
 (define (my-identity)
-  
+  (lambda (x) x)
   )
+
 
 (define (my-lambda f)
-  
+  (λ (x) (f x))
   )
+
+
 
 (define (negate-pred p?)
-  
+  (λ (x) (not (p? x)))
   )
+
+
 
 (define (my-compose f g)
-  
+  (λ (x) (f (g x)))
   )
 
+
+
 (define (partially-apply f x)
-  
+  (curry f x)
   )
+
+
+
 
 ; write 2 tests for subtask 1
 (= ((my-identity) 5) 5)
 (equal? ((my-identity) #f) #f)
+
+
 
 (= ((my-lambda identity) 5) 5)
 (equal? ((my-lambda identity) "Tensorflow") "Tensorflow")
